@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Game.css"
 const Game = () => {
 
-    const [player] = useState("Player 1");
+    const [player, setPlayer] = useState("Player 1");
     const [val, setVal] = useState(Array(9).fill(""))
     const [data, setData] = useState("X")
 
@@ -10,20 +10,27 @@ const Game = () => {
         console.log("index", index)
         let temp = [...val];
         if (temp[index] === "") {
-            temp[index] = "X"
+            temp[index] = data;
             setVal(temp);
-        } else if( temp[index]==="X"){
-            temp[index] = "O"
-            setVal(temp);
-        } else{
-            temp[index] = "X"
-            setVal(temp);
-        }
+            if (player === "Player 1") {
+                setPlayer("Player 2")
+            }
+            else {
+                setPlayer("Player 1")
+            }
 
+            if (data === "X") {
+                setData("O");
+            }
+            else {
+                setData("X");
+            }
+
+        }
     }
     return (
         <div className="container">
-            <span>{player} is playing</span>
+            <span>{player} Turn</span>
             <div className="grid">
                 {
                     val.map((item, index) => {
