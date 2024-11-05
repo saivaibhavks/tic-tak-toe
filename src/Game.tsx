@@ -30,7 +30,7 @@ const Game = () => {
     }
     return (
         <div className="container">
-            <span>{player} Turn</span>
+            <span>{player} Turn is playimng</span>
             <div className="grid">
                 {
                     val.map((item, index) => {
